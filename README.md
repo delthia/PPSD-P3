@@ -1,0 +1,23 @@
+# PPSD Práctica 3. Protección de datos II
+
+- **Criptografía moderna**
+    - [ ] Cryptool RSA
+    - [x] OpenSSL
+    - [x] Cryptool D&H
+- **Certificados digitales**
+    - [x] Certificados HTTPS (faltan las capturas de openssl)
+    - [ ] Certificado digital
+- **PGP y S/MIME**
+    - [ ] Generar Claves
+    - [ ] Thunderbird
+    - [ ] Outlook
+    - [ ] GPG
+    - [ ] S/MIME
+    - [ ] Firma KeepassXC
+- **Privacidad**
+    - [ ] Cookies
+    - [ ] Política de cookies
+    - [ ] Cookies en Firefox
+    - [ ] ProtonVPN
+    - [ ] VPN UDC
+    - [x] TOR
