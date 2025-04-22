@@ -1,14 +1,14 @@
-\documentclass[a4paper, titlepage]{article}
+\documentclass[12pt,a4paper]{article}
+\setlength{\headheight}{18.0pt}
 
-\usepackage[spanish]{babel}
-\selectlanguage{spanish}
+\usepackage[english,spanish]{babel}
 %\usepackage{sectsty}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-% \usepackage{titling}
-%\usepackage{float}
-%\usepackage{fancyhdr}
+%\usepackage{titling}
+\usepackage{float}
+\usepackage{fancyhdr}
 \usepackage{amsmath, amsthm, amsfonts}
 \usepackage{graphicx}   % Para \graphicspath
 \usepackage{float}      % Para float H
@@ -22,11 +22,12 @@
 
 % Opciones del documento
 \usepackage[a4paper, top=3cm, bottom=2cm, left=3cm, right=3cm, marginparwidth=1.75cm]{geometry}
-\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorinlistoftodos]{todonotes}
 %\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 %\usepackage[style=apa, sorting=nyt]{biblatex}
 %\addlibresource{bibliografia.bib}
+\usepackage[labelfont=bf,font=rm]{caption} % Formato de las captions
 
 % Bibliografía
 %\defbibenvironment{bibliography}
@@ -39,23 +40,56 @@
 %{\item}
 
 % METADATOS
-\title{PPSD. Práctica 3 - Protección de datos II}
-\author{
-    Losada Sánchez, Alicia\\
-    \texttt{alicia.losada.sanchez@udc.es}
-    \and
-    Muñiz Rodríguez, Nicolás\\
-    \texttt{nicolas.muniz@udc.es}
-    \and
-    Rivas Moar, Iago\\
-    \texttt{iago.rivas@udc.es}
+\title{
+    \begin{figure}[htbp!]
+        \begin{center}
+        \includegraphics[scale=0.4]{ejercicios/img/UDC.png}       % Logotipo en color
+        %\includegraphics[scale=0.4]{ejercicios/img/UDC-BN.png}    % Logotipo en blanco y negro
+        \end{center}
+        \label{fig:udc}
+    \end{figure}
+
+    \textsf{UNIVERSIDADE DA CORUÑA \\}
+    \textbf{\\ PPSD, Práctica 3: \\ Protección de datos II}
 }
 
-%\graphicspath{ {../img/} }
+\author{
+    Losada Sánchez, Alicia\\
+    \texttt{\href{mailto:alicia.losada.sanchez@udc.es}{alicia.losada.sanchez@udc.es}}
+    \and
+    Muñiz Rodríguez, Nicolás\\
+    \texttt{\href{mailto:nicolas.muniz@udc.es}{nicolas.muniz@udc.es}}
+    \and
+    Rivas Moar, Iago\\
+    \texttt{\href{mailto:iago.rivas@udc.es}{iago.rivas@udc.es}}
+    \\ \\
+    %\and
+    Facultade de Informática
+}
+\date{\today}
+
+\pagestyle{fancy}
+\fancyhead[L]{\textbf{PPSD - Práctica 3}}
+\fancyhead[C]{\large\textbf{Protección de datos II}}
+\fancyhead[R]{\textbf{GCED}}
+\fancyfoot{}
+
+\graphicspath{ {ejercicios/img} }
 %te\graphicspath {{ ejercicios/img/ }}
+
+
 
 \begin{document}
 \maketitle
+
+%\selectlanguage{english}
+%\begin{abstract}
+%    On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted.
+%\end{abstract}
+\thispagestyle{empty}
+
+\newpage
+\selectlanguage{spanish}
 
 \section{Criptografía moderna}
 \input{ejercicios/1}
@@ -92,3 +126,4 @@
 % <iría aquí>
 
 % Secciones
+
