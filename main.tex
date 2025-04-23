@@ -1,10 +1,12 @@
 \documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+%\usepackage[margin=25mm]{geometry}
 \setlength{\headheight}{18.0pt}
+
 
 \usepackage[english,spanish]{babel}
 %\usepackage{sectsty}
 
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 %\usepackage{titling}
 \usepackage{float}
@@ -13,17 +15,20 @@
 \usepackage{graphicx}   % Para \graphicspath
 \usepackage{float}      % Para float H
 \usepackage{listings}
-%\usepackage{graphicx}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{minted}
+\usepackage{xcolor}
 %\usepackage{tcolorbox}
 %\usepackage{svg}
 %\usepackage{placeins}
 %\usepackage{fancyvrb}
-%\usepackage{verbatim}
+
+\definecolor{bgGray}{rgb}{0.88,0.88,0.88}
 
 % Opciones del documento
 \usepackage[a4paper, top=3cm, bottom=2cm, left=3cm, right=3cm, marginparwidth=1.75cm]{geometry}
 %\usepackage[colorinlistoftodos]{todonotes}
-%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage[hidelinks]{hyperref}
 %\usepackage[style=apa, sorting=nyt]{biblatex}
 %\addlibresource{bibliografia.bib}
@@ -43,9 +48,9 @@
 
 % METADATOS
 \title{
-    \begin{figure}[htbp!]
+    \begin{figure}[H]
         \begin{center}
-        \includegraphics[scale=0.35]{UDC.png}       % Logotipo en color
+        \includegraphics[scale=0.3]{UDC.png}       % Logotipo en color
         %\includegraphics[scale=0.35]{UDC-BN.png}    % Logotipo en blanco y negro
         \end{center}
         \label{fig:udc}
@@ -53,31 +58,38 @@
 
     \textsf{UNIVERSIDADE DA CORUÑA} \\
     \textsf{\Large Facultade de Informática} \\
-    \hfill \\
+
+    \vfill
     \textbf{PPSD, Práctica 3: \\ Protección de datos II}
 }
 
 \author{
-    \\
     Losada Sánchez, Alicia \\
     \texttt{\href{mailto:alicia.losada.sanchez@udc.es}{alicia.losada.sanchez@udc.es}}
-    \and \\
+    \\ \\
     Muñiz Rodríguez, Nicolás \\
     \texttt{\href{mailto:nicolas.muniz@udc.es}{nicolas.muniz@udc.es}}
-    \and \\
+    \\ \\
     Rivas Moar, Iago \\
     \texttt{\href{mailto:iago.rivas@udc.es}{iago.rivas@udc.es}}
     \\ \\
+    \vspace{5cm}
 }
-\date{\today}
+\date{\textsf\today}
+
+
+\usepackage{titling}
+% espacio de antes
+\setlength{\droptitle}{-2cm}
+% espacio DESPUÉS del \maketitle
+\posttitle{\vspace{0.5cm}}
+
 
 \pagestyle{fancy}
 \fancyhead[L]{\textbf{PPSD - Práctica 3}}
 \fancyhead[C]{\large\textbf{Protección de datos II}}
 \fancyhead[R]{\textbf{GCED}}
 \fancyfoot{}
-
-
 
 
 \begin{document}

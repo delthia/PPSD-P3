@@ -12,27 +12,27 @@ Los sitios web seleccionados fueron:
     \item \href{www.wikipedia.org}{wikipedia.org}
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[H]   
     \includegraphics[width=15cm]{cert-coruna.png}
     \caption{Certificado de \url{coruna.gal}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=15cm]{cert-delthia.png}
     \caption{Certificado de \url{delthia.com}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=15cm]{cert-transportes.png}
     \caption{Certificado de \url{nap.transportes.gob.es}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=15cm]{cert-udc.png}
     \caption{Certificado de \url{udc.es}}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=15cm]{cert-wikipedia.png}
     \caption{Certificado de \url{wikipedia.org}}
 \end{figure}
@@ -41,8 +41,13 @@ Los sitios web seleccionados fueron:
 
 A continuación se analizan los certificados de \url{coruna.gal} y \url{udc.es}, para lo que utiliza \texttt{OpenSSL} para descargar el certificado y ver los detalles con el comando
 
-\begin{lstlisting}
+\begin{minted}[
+frame=single,
+framesep=8pt,
+breaklines,
+bgcolor=bgGray,
+]{bash}
     openssl s_client -showcerts -servername coruna.gal -connect coruna.gal:443
-\end{lstlisting}
+\end{minted}
 
-Es importante indicar el nombre de deominio del que se desea obtener el certificado, ya que desde un mismo servidor con la misma dirección se pueden servir varios sitios web, dependiendo de la cabecera \texttt{host}.
+Es importante indicar el nombre de dominio del que se desea obtener el certificado, ya que desde un mismo servidor con la misma dirección se pueden servir varios sitios web, dependiendo de la cabecera \texttt{host}.
