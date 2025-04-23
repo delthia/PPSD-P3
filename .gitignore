@@ -2,3 +2,4 @@
 *.aux
 *.toc
 *.out
+**/_minted-main
