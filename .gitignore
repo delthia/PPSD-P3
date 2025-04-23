@@ -2,4 +2,6 @@
 *.aux
 *.toc
 *.out
+*.bbl
+*.blg
 **/_minted-main

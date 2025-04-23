@@ -1,56 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formato de las páginas %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
-%\usepackage[margin=25mm]{geometry}
 \setlength{\headheight}{18.0pt}
-
-
 \usepackage[english,spanish]{babel}
-%\usepackage{sectsty}
+\usepackage[margin=25mm]{geometry}
+\parskip 4.2pt  % Espaciado entre párrafos
+\parindent 9pt  % Indentación de párrafos
+%\renewcommand{\baselinestretch}{1.5}  % Interlineado de 1.5
 
-\usepackage[T1]{fontenc}
-%\usepackage{titling}
-\usepackage{float}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Headers decorados %
+%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{fancyhdr}
-\usepackage{amsmath, amsthm, amsfonts}
-\usepackage{graphicx}   % Para \graphicspath
-\usepackage{float}      % Para float H
-\usepackage{listings}
+\pagestyle{fancy}
+\fancyhead[L]{\textbf{PPSD - Práctica 3}}
+\fancyhead[C]{\large\textbf{Protección de datos II}}
+\fancyhead[R]{\textbf{GCED}}
+\fancyfoot
+
+
+%%%%%%%%%%%%
+% Imágenes %
+%%%%%%%%%%%%
+
 \usepackage{graphicx}
-\usepackage{verbatim}
-\usepackage{minted}
-\usepackage{xcolor}
-%\usepackage{tcolorbox}
-%\usepackage{svg}
-%\usepackage{placeins}
-%\usepackage{fancyvrb}
-
-\definecolor{bgGray}{rgb}{0.88,0.88,0.88}
-
-% Opciones del documento
-\usepackage[a4paper, top=3cm, bottom=2cm, left=3cm, right=3cm, marginparwidth=1.75cm]{geometry}
-%\usepackage[colorinlistoftodos]{todonotes}
-\usepackage[hidelinks]{hyperref}
-%\usepackage[style=apa, sorting=nyt]{biblatex}
-%\addlibresource{bibliografia.bib}
+\usepackage{float}
 \usepackage[labelfont=bf,font=rm]{caption} % Formato de las captions
-
-% Bibliografía
-%\defbibenvironment{bibliography}
-%{\enumerate{}
-%{\setlength{\leftmargin}{\bibhang}%
-%\setlength{\itemindent}{-\leftmargin}%
-%\setlength{\itemsep}{\bibitemsep}%
-%\setlength{\parsep}{\bibparsep}}}
-%{\endenumerate}
-%{\item}
-
 \graphicspath{ {img} }
 
-% METADATOS
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hipervínculos y Bibliografía %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{url} % simple URL typesetting
+
+\usepackage[square,numbers]{natbib} % Citas
+\usepackage[nottoc]{tocbibind} % Incluye Bibliografía en el Índice
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Símbolos y bloques de código/texto %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{minted}
+\usepackage{verbatim}
+%\usepackage{siunitx} % Unidades del SI
+
+
+%%%%%%%%%%%
+% Colores %
+%%%%%%%%%%%
+
+\usepackage{xcolor}
+\definecolor{bgGray}{rgb}{0.88,0.88,0.88}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Título, autores y fecha %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \title{
     \begin{figure}[H]
         \begin{center}
-        \includegraphics[scale=0.3]{UDC.png}       % Logotipo en color
+        \includegraphics[scale=0.35]{UDC.png}       % Logotipo en color
         %\includegraphics[scale=0.35]{UDC-BN.png}    % Logotipo en blanco y negro
         \end{center}
         \label{fig:udc}
@@ -78,19 +99,10 @@
 \date{\textsf\today}
 
 
-\usepackage{titling}
-% espacio de antes
-\setlength{\droptitle}{-2cm}
-% espacio DESPUÉS del \maketitle
-\posttitle{\vspace{0.5cm}}
 
-
-\pagestyle{fancy}
-\fancyhead[L]{\textbf{PPSD - Práctica 3}}
-\fancyhead[C]{\large\textbf{Protección de datos II}}
-\fancyhead[R]{\textbf{GCED}}
-\fancyfoot{}
-
+%%%%%%%%%%%%%%%%%%%%%%%%
+% Inicio del documento %
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \maketitle
@@ -134,5 +146,11 @@
 \input{ejercicios/15}
 \input{ejercicios/16}
 \input{ejercicios/17}
+
+
+\newpage
+\setcitestyle{numbers}
+\bibliographystyle{apalike}
+\bibliography{refs}
 
 \end{document}
