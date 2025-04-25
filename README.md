@@ -16,8 +16,8 @@
     - [ ] Firma KeepassXC
 - **Privacidad**
     - [ ] Cookies
-    - [ ] Política de cookies
-    - [ ] Cookies en Firefox
+    - [ ] Política de cookies -> me lo pido (alicia)
+    - [ ] Cookies en Firefox -> me lo pido (alicia)
     - [ ] ProtonVPN
     - [ ] VPN UDC
     - [x] TOR
