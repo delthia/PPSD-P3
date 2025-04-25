@@ -1,6 +1,8 @@
 \subsection{Ejercicio 1}
 \graphicspath{ {img/1} }
 
+\subsubsection{Generación claves RSA Cryptool}
+
 \begin{figure}[H]
     \includegraphics[width=15cm]{ClavesRSA-01.png}
     \caption{Generación del perfil del par de claves RSA}
@@ -35,6 +37,20 @@
     \includegraphics[width=15cm]{ClavesRSA-07.png}
     \caption{Generación del perfil del par de claves RSA}
 \end{figure}
+
+
+\subsubsection{¿Qué números conforman la clave pública?}
+
+La clave pública está formada principalmente por dos números. El primero de ellos es el módulo ‘n’, que consiste en el producto de dos números primos (‘p’ y ‘q’ vistos en las clases teóricas) y es común tanto a la clave pública como a la privada. El segundo es el exponente público ‘e’, que suele tomar el valor de 65537. 
+
+\subsubsection{¿A qué nos referimos con tamaño de clave?}
+
+Como se explica en el apartado anterior, la clave está formada por dos números: ‘n’ y ‘e’. Que la clave tenga 2048 bits significa que el módulo ‘n’ tiene ese tamaño.  
+
+Este tamaño nos indica la dificultad que tendría un ataque de fuerza bruta y el tamaño máximo a cifrar con esa clave. 
+
+
+\subsubsection{Pruebas cifrado y descifrado}
 
 \begin{figure}[H]
     \includegraphics[width=15cm]{EncriptadoRSA-1}

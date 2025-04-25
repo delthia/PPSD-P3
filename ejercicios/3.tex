@@ -1,1 +1,24 @@
 \subsection{Ejercicio 3}
+\graphicspath{ {img/3} }
+
+\subsubsection{Generación clave D&H}
+
+COMPLETAR
+
+\subsubsection{Utilidad clave}
+
+La clave generada mediante el protocolo D&H (Diffie-Hellman) se usa para establecer un secreto compartido entre dos usuarios, incluso si se comunican a través de un canal inseguro como Internet. Este secreto compartido puede servir, por ejemplo, como clave simétrica para cifrar y descifrar mensajes. 
+
+La funcionalidad de D&H no es el cifrado de mensajes, sino permitir a las dos partes acordar una clave secreta. 
+
+\subsubsection{Problemas de seguridad}
+
+A pesar de parecer ser un método inteligente para el acuerdo de una clave secreta, si no se toman las medidas de seguridad necesarias, puede llegar a ser un método vulnerable.  
+
+Consideramos que el principal problema con el que nos podemos encontrar es que, como D&H no autentica las partes participantes, un atacante puede interceptar los valores públicos y establecer claves falsas con ambas partes. Así, el atacante podrá leer y modificar los mensajes sin ser detectado. 
+
+Esto se puede solucionar utilizando distintos tipos de métodos de autenticación, como certificado digital o firma digital, para verificar las identidades participantes. 
+
+Por otra parte, si usamos parámetros débiles como un ‘p’ muy pequeño, como es nuestro caso, se hace posible un ataque por fuerza bruta o logaritmo discreto usando computadoras modernas. 
+
+Esto se puede evitar haciendo uso de claves suficientemente grandes, así como valores seguros de ‘p’ y de ‘g’. 

@@ -3,7 +3,7 @@
 - **Criptografía moderna**
     - [x] Cryptool RSA
     - [x] OpenSSL
-    - [x] Cryptool D&H
+    - [x] Cryptool D&H (falta generar las claves con Cryptool)
 - **Certificados digitales**
     - [x] Certificados HTTPS (faltan las capturas de openssl)
     - [ ] Certificado digital
