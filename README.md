@@ -17,7 +17,7 @@
 - **Privacidad**
     - [ ] Cookies
     - [x] Política de cookies
-    - [ ] Cookies en Firefox -> me lo pido (alicia)
+    - [x] Cookies en Firefox 
     - [ ] ProtonVPN
     - [ ] VPN UDC
     - [x] TOR
