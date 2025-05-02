@@ -7,19 +7,41 @@ Para añadir las claves se utiliza la herramienta \texttt{Gestor de claves PGP},
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{thunderbird-tools-menu.png}
-    \caption{Menú con la herramienta "Gestión de claves OpenPGP"}
+    \caption{Menú con la herramienta “Gestión de claves OpenPGP”}
 \end{figure}
 
 \begin{figure}[H]
-    \includegraphics[width=\textwidth]{thunderbird-keymanager.png}
-    \caption{Importación de claves en la herramienta "Gestión de claves OpenPGP"}
+    \includegraphics[width=10cm]{thunderbird-keymanager.png}
+    \caption{Importación de claves en la herramienta “Gestión de claves OpenPGP”}
 \end{figure}
 
-Ahora, encriptar un correo es cuestión de selecciónar la opción "Encriptar" que se habilitará en la ventana de redacción, justo al lado del botón enviar. Junto a este botón hay un desplegable con tres opciones:
+\begin{figure}[H]
+    \includegraphics[width=10cm]{thunderbird-keymanager-keys.png}
+    \caption{Claves PGP importadas en Thunderbird}
+\end{figure}
+
+Ahora, encriptar un correo es cuestión de selecciónar la opción “Encriptar” que se habilitará en la ventana de redacción, justo al lado del botón enviar. Junto a este botón hay un desplegable con tres opciones:
 \begin{itemize}
     \item{\underline{Firmar:} Firma el correo con la clave del remitente. No afecta a la capacidad de leer el correo del destinatario.}
-    \item{\underline{Encriptar:} Encripta el correo con la clave del destinatario, por lo que es necesario conoecer la clave pública del mismo. Además, el destinatario no podrá leer el correo sin desencriptarlo con su clave privada. Existe una opción que permite encriptar también el asunto}
-    \item{Firmar y encriptar: Primero se firma el correo y luego se encripta. Esto permite mantener la privacidad en la comunicación y que solo el destinatario, que puede leer el correo, pueda comprobar también que el remitente es quien dice ser}
+    \item{\underline{Encriptar:} Encripta el correo con la clave del destinatario, por lo que es necesario conoecer la clave pública del mismo. Además, el destinatario no podrá leer el correo sin desencriptarlo con su clave privada. Existe una opción que permite encriptar también el asunto.}
+    \item{Firmar y encriptar: Primero se firma el correo y luego se encripta. Esto permite mantener la privacidad en la comunicación y que solo el destinatario, que puede leer el correo, pueda comprobar también que el remitente es quien dice ser.}
 \end{itemize}
 
 En estos casos el mensaje se envía como un bloque cifrado, y en caso de solo firmarse, se adjunta la firma. En otro lector de correo, por ejemplo la versión web de outlook, no podremos leer el mensaje y tendremos que descargarlo para desencriptarlo con \texttt{gpg}, mientras que Thunderbird muestra automáticamente los mensajes cifrados como si no lo estuvieran, además de indicar claramente si tienen una firma y si es válida.
+
+En primer lugar se envió un correo firmado, luego un correo cifrado y, por último, un correo cifrado y firmado.
+
+\begin{figure}[H]
+    \includegraphics[width=10cm]{thunderbird-firmado.png}
+    \caption{Envío de un correo firmado desde Thunderbird}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=10cm]{thunderbird-cifrado.png}
+    \caption{Envío de un correo cifrado desde Thunderbird}
+\end{figure}
+
+\begin{figure}[H]
+    \includegraphics[width=10cm]{thunderbird-cifrado-firmado.png}
+    \caption{Envío de un correo cifrado y firmado desde Thunderbird}
+\end{figure}

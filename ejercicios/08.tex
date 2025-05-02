@@ -1,1 +1,55 @@
 \subsection{Ejercicio 8}
+\graphicspath{ {img/08} }
+
+A la hora de utilizar el comando \texttt{gpg} existen una serie de opciones realmente versátiles:
+
+\begin{itemize}
+    \item{\texttt{--armor}: Codificar la salida como ASCII, útil para el correo electrónico, que en general solo soporta esta codificación}
+    \item{\texttt{--output <path>}: Archivo en el que almacenar la salida del comando utilizado}
+    \item{\texttt{--recipients}: Añadir un destinatario que podrá descrifrar el mensaje. Se pueden especificar varios utilizando varias veces esta opción}
+    \item{\texttt{--sign}/\texttt{-s}: Firmar la entrada}
+    \item{\texttt{--encrypt}/\texttt{-e}: Encriptar la entrada}
+    \item{\texttt{--local-user}: Útil para indicar la identidad con la que firmar, en caso de tener varias claves privadas}
+    \item{Finalmente se indica el archivo a procesar.}
+\end{itemize}
+
+Es útil saber que es posible añadir varios destinatarios para un archivo cifrado, lo que permite simplemente cifrar un mensaje una vez para enviarlo a un hilo de correo en el que participan varias personas.
+
+Otra cosa a tener en cuenta es que suele ser recomendable añadirse a uno mismo como destinatario, lo que permite descifrar los correos ya enviados.
+
+Así, enviar un correo firmado se puede hacer simplemente con el comando
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    gpg --sign --armor -u iago.rivas@udc.es cuerpo-correo.txt
+\end{minted}
+
+Se indica la identidad con la que firmar el mensaje, ya que dispongo de varias claves privadas.
+
+Para cifrar un correo podemos usar la opción \texttt{encrypt} indicando los recipientes del correo. Además, en este caso no es necesario indicar la identidad, ya que al solo cifrar, nuestra clave privada no se utiliza en ningún momento.
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    gpg --encrypt --armor --output correo-cif.asc -r iago.rivas@udc.es -r alicia.losada.sanchez@udc.es -r nicolas.muniz@udc.es cuerpo-correo.txt
+\end{minted}
+
+Por último, para firmar un correo además de cifrarlo añadiremos la opción \texttt{sign}. En este caso se vuelve a utilizar la clave privada, ya que al firmar queremos demostrar que el correo se originó en nosotros.
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    gpg --encrypt --sign --armor --output correo-cif-sig.asc -r iago.rivas@udc.es -r alicia.losada.sanchez@udc.es -r nicolas.muniz@udc.es -u iago.rivas@udc.es cuerpo-correo.txt
+\end{minted}
+
+Aunque al enviar correos con PGP desde Thunderbird se incluyen otros archivos como la clave pública y otros metadatos, al enviar un correo con la firma adjunta, o que solo contiene un archivo adjunto que contiene el contenido cifrado del mensaje, Thunderbird utilizará PGP automáticamente y nos mostrará la información sobre la firma.

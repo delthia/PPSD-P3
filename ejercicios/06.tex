@@ -1,7 +1,7 @@
 \subsection{Ejercicio 6}
 \graphicspath{ {img/06} }
 
-GPG, o GnuPGP, es la implementación de GNU del estándar de criptografía PGP. Con el comando \texttt{gpg} se pueden generar claves, gestionar claves y firmar, cifrar, descifrar y comprobar la firma de documentos encriptados con PGP.
+GPG, o GnuPGP, es la implementación de GNU del estándar de criptografía PGP. Con el comando \texttt{gpg} se pueden generar y gestionar claves, firmar, cifrar, descifrar y comprobar la firma de documentos encriptados con PGP.
 
 Para generar un par de claves se puede utilizar el siguiente comando:
 \begin{minted}[
@@ -16,7 +16,7 @@ Para generar un par de claves se puede utilizar el siguiente comando:
 que preguntará información sobre el usuario para generar la clave, concretamente:
 \begin{itemize}
     \item{Nombre}
-    \item{Direccion de correo electrónico}
+    \item{Dirección de correo electrónico}
     \item{Contraseña para las claves}
 \end{itemize}
 
@@ -37,12 +37,21 @@ Una vez generadas las claves, es necesario exportarlas, para poder compartirlas.
     breaklines,
     bgcolor=bgGray
 ]{bash}
-    gpg --output 2_Rivas_Moar,_Iago.asc --armor --export iago.rivas@udc.es
+    gpg --output 1.2_Rivas_Moar,_Iago.asc --armor --export iago.rivas@udc.es
 \end{minted}
 
-La opción \texttt{--armor} hace que se exporte una representación en ASCII de la clave, y simplemente es necesario indicar la clave que se quiere exportar por su correo electrónico o con el ID. Compartir la clave sería cuestión de enviarla por correo electrónico u otro medio.
+La opción \texttt{--armor} hace que se exporte una representación en ASCII de la clave, y simplemente es necesario indicar la clave que se quiere exportar por su correo electrónico o con el ID. Compartir la clave sería cuestión de enviarla por correo electrónico u otro medio. Para importar una clave pública se puede utilizar la opción \texttt{import}:
 
-Si quisiéramos copiar el par de claves completo a otro ordenador, para poder utilizarla en varios ordenadores, tendríamos que cambiar la opción \texttt{--export} por \\ \texttt{--export-secret-keys}.
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    gpg --import 1.2_Losada_Sanchez,_Alicia.asc
+\end{minted}
+
+Si quisiéramos copiar el par de claves completo a otro ordenador, para poder utilizarla en varios ordenadores, tendríamos que cambiar \texttt{--export} por \texttt{--export-secret-keys}. También necesitaremos el par completo para poder importarlo en Thunderbird.
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{gpg-export.png}
@@ -60,4 +69,4 @@ Por último, si perdiéramos el control de nuestra clave privada y quisiéramos 
     gpg --output iago.rivas-revocation.asc --armor --gen-revoke iago.rivas@udc.es
 \end{minted}
 
-Que generaría un comando de revocación que podríamos compartir a nuestros contactos.
+Que generaría un comando de revocación que podríamos compartir con nuestros contactos.
