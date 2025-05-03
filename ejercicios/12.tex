@@ -10,6 +10,7 @@ Los sitios web seleccionados fueron:
 \subsubsection{Cookies almacenadas}
 
 \begin{figure}[H]
+    \centering
     \includegraphics[width=\textwidth]{cookies_wiki.png}
     \caption{Cookies almacenadas por Wikipedia}
     \label{fig:cookies_wiki}
@@ -29,6 +30,7 @@ Seleccionamos la cookie ``GeoIP'' para su análisis. Esta cookie contiene inform
 Aunque la cookie no contiene datos especialmente sensibles, la combinación de ``Secure=false'', ``HttpOnly=false'' y ``SameSite=None'' la hace más vulnerable que otras cookies más restringidas. Sin embargo, dado que Wikipedia utiliza HTTPS obligatorio y no utiliza cookies de sesión crítica para usuarios no registrados, el riesgo real es bajo. 
 
 \begin{figure}[H]   
+    \centering
     \includegraphics[width=\textwidth]{cookies_pais.png}
     \caption{Cookies almacenadas por El Pais}
     \label{fig:cookies_pais}
@@ -66,6 +68,7 @@ Por otra parte, como se ve en \ref{fig:cookies_pais}, en el momento de la visita
 Para eliminar todas las cookies de ambos sitios web, debemos hacer click derecho en cualquiera de las cookies que se ven en \ref{fig:cookies_wiki} y \ref{fig:cookies_pais}, y seleccionamos la opción ``Eliminar todo de `es.wikipedia.org' '' en el caso de Wikipedia y ``Eliminar todo de `elpais.com' ''. Una vez hecho esto, procedimos a acceder a ambas webs en modo navegación privada. 
 
 \begin{figure}[H]   
+    \centering
     \includegraphics[width=\textwidth]{cookies_wiki_npriv.png}
     \caption{Cookies almacenadas por Wikipedia en navegación privada tras eliminación}
     \label{fig:cookies_wiki_npriv}
@@ -76,6 +79,7 @@ Al eliminar todas las cookies del sitio wikipedia.org, se borra toda la informac
 Al acceder a Wikipedia en modo de navegación privada, se comprueba, como se muestra en \ref{fig:cookies_wiki_npriv}, que no se han generado cookies persistentes ni otros datos de almacenamiento, como service workers o bases de datos. Esto es coherente con el comportamiento de Wikipedia, que aplica una política de privacidad estricta: no utiliza rastreadores ni cookies de terceros, y solo crea cookies mínimas y temporales necesarias para aspectos técnicos. Además, al cerrar la ventana privada, cualquier cookie temporal generada durante la sesión se elimina automáticamente, dejando el navegador sin rastro de la actividad. 
 
 \begin{figure}[H]   
+    \centering
     \includegraphics[width=\textwidth]{cookies_pais_npriv.png}
     \caption{Cookies almacenadas en El País en navegación privada tras eliminación}
     \label{fig:cookies_pais_npriv}
