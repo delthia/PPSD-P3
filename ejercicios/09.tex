@@ -2,3 +2,16 @@
 \graphicspath{ {img/09} }
 
 Si queremos almacenar el archivo \texttt{secreto.txt} de manera segura, con OpenPGP, debemos cifrarlo con nuestra propia clave pública para que solo seamos nosotros, los únicos con acceso a nuestra clave privada, quienes podemos abrirlo. Además, al cifrar archivos para almacenarlos o compartirlos de otra manera, no necesitamos usar la \texttt{armor}, como hacíamos con el correo electrónico, ya que en este caso nos a igual que el archivo sea un archivo binario en bruto al no tener la limitación de ASCII del correo electrónico.
+
+Así, para cifrar un archivo \texttt{foto-importante.jpg} con PGP podemos usar el comando:
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    gpg --encrypt -r iago.rivas@udc.es foto-importante.jpg
+\end{minted}
+
+La principal diferencia con los comandos utilizados para cifrar mensajes de correo electrónico es que no necesitamos almacenarlo en ASCII. Además, en este caso, como queremos cifrar el archivo para almacenarlo y necesitamos poder descifrarlo nosotros mismos en el futuro, nos pondremos como recipiente. Así, el archivo se cifra con nuestra propia clave pulica.

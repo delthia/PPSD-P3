@@ -9,7 +9,7 @@ A la hora de utilizar el comando \texttt{gpg} existen una serie de opciones real
     \item{\texttt{--recipients}: Añadir un destinatario que podrá descrifrar el mensaje. Se pueden especificar varios utilizando varias veces esta opción}
     \item{\texttt{--sign}/\texttt{-s}: Firmar la entrada}
     \item{\texttt{--encrypt}/\texttt{-e}: Encriptar la entrada}
-    \item{\texttt{--local-user}: Útil para indicar la identidad con la que firmar, en caso de tener varias claves privadas}
+    \item{\texttt{--local-user}/\texttt{-u}: Útil para indicar la identidad con la que firmar, en caso de tener varias claves privadas}
     \item{Finalmente se indica el archivo a procesar.}
 \end{itemize}
 
@@ -53,3 +53,7 @@ Por último, para firmar un correo además de cifrarlo añadiremos la opción \t
 \end{minted}
 
 Aunque al enviar correos con PGP desde Thunderbird se incluyen otros archivos como la clave pública y otros metadatos, al enviar un correo con la firma adjunta, o que solo contiene un archivo adjunto que contiene el contenido cifrado del mensaje, Thunderbird utilizará PGP automáticamente y nos mostrará la información sobre la firma.
+
+Para enviar un mensaje firmado podemos adjuntar el archivo con la firma, que el recipiente podrá comprobar manualmente descargando la firma y el contenido de correo. Thunderbird no detecta automáticamente el archivo de firma.
+
+Para mensajes cifrados es aún más sencillo. Basta con pegar mensaje cifrado en el cuerpo del mensaje. Si el destinatario no tiene thunderbird, puede desencriptar el mensaje manualmente con \texttt{gpg}, mientras que si usa Thunderbird, detectará automáticamente que se trata de un mensaje cifrado y lo descifrará. También comprobará la firma si existe.
