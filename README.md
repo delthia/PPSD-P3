@@ -6,20 +6,20 @@
     - [x] Cryptool D&H
 - **Certificados digitales**
     - [x] Certificados HTTPS (faltan las capturas de openssl)
-    - [ ] Certificado digital
+    - [x] Certificado digital
 - **PGP y S/MIME**
-    - [ ] Generar Claves
-    - [ ] Thunderbird
-    - [ ] Outlook
-    - [ ] GPG
-    - [ ] S/MIME
+    - [x] Generar Claves
+    - [x] Thunderbird
+    - [ ] Outlook (capturas para comprobar que se pueden leer correctamente los mensajes)
+    - [ ] GPG (responder a apartados b y c)
+    - [ ] S/MIME 
     - [ ] Firma KeepassXC
 - **Privacidad**
     - [x] Cookies
     - [x] Política de cookies
     - [x] Cookies en Firefox 
-    - [ ] ProtonVPN
-    - [ ] VPN UDC
+    - [ ] ProtonVPN (Nico)
+    - [ ] VPN UDC (Nico)
     - [x] TOR
 
 # Pequeña guía de compilación
