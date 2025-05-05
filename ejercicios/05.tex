@@ -68,6 +68,109 @@ Las claves se generan en el propio navegador del usuario en el momento en que se
 
 Esta clave privada se almacena localmente en el almacén de certificados del navegador o del sistema operativo, dependiendo del navegador utilizado. Por ejemplo, en Firefox se guarda en su propio almacén interno, mientras que en navegadores como Chrome o Edge en Windows, se almacena en el almacén de certificados del sistema operativo. 
 
+\subsubsection{Certificado formato PKCS 7}
+
+Para poder obtener el certificado de clave pública en formato PKCS 7, se deben utilizar los siguientes comandos.
+
+Primero, debemos pasar el fichero '.p12' a un fichero con formato '.pem', que será utilizado en el siguiente apartado. Para ello, necesitamos el siguiente comando:
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    openssl pkcs12 -in certificado.p12 -clcerts -nokeys -out certificado.pem
+\end{minted}
+
+Posteriormente, para obtener el certificado en formato '.p7b', debemos utilizar el siguiente comando:
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    openssl crl2pkcs7 -nocrl -certfile certificado.pem -out certficado.p7b
+\end{minted}
 
 \subsubsection{Análisis campos clave pública OpenSSL}
 
+\begin{figure}[H]   
+    \centering
+    \includegraphics[width=0.8\textwidth]{apartadoc_1.png}
+    \caption{Parte 1 campos clave pública}
+    \label{fig:apartadoc_1}
+\end{figure}
+
+\begin{figure}[H]   
+    \centering
+    \includegraphics[width=0.8\textwidth]{apartadoc_2.png}
+    \caption{Parte 2 campos clave pública}
+    \label{fig:apartadoc_2}
+\end{figure}
+
+\begin{figure}[H]   
+    \centering
+    \includegraphics[width=0.8\textwidth]{apartadoc_3.png}
+    \caption{Parte 3 campos clave pública}
+    \label{fig:apartadoc_3}
+\end{figure}
+
+Una vez exportado el certificado digital en formato \texttt{.pem}, se ha utilizado la herramienta \texttt{OpenSSL} para examinar su contenido mediante el siguiente comando: 
+
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    openssl x509 -in certificado_alicia.pem -noout -text 
+\end{minted}
+
+
+
+En las Figuras /ref{fig:apartadoc_1}, /ref{fig:apartadoc_2} y /ref{fig:apartadoc_3} se pueden ver los distintos campos del certificado correspondiente.  
+
+A continuación, se detallan los campos más relevantes obtenidos del análisis: 
+
+\textbf{Versión y algoritmo de firma} \ Versión: 3 (X.509v3), lo que permite incluir extensiones adicionales. \ Algoritmo de firma: \texttt{sha256WithRSAEncryption}, que combina la función hash SHA-256 con el algoritmo RSA. Esta combinación garantiza la integridad y autenticidad del certificado. 
+
+\textbf{Número de serie} \ El número de serie del certificado es \texttt{11:22:51:08:ae:14:ec:78:67:ff:75:f1:ae:f3:ff:c2}. Este valor es único para cada certificado emitido por la autoridad certificadora y permite su identificación. 
+
+\textbf{Emisor (Issuer)} \ \texttt{C=ES, O=FNMT-RCM, OU=Ceres, CN=AC FNMT Usuarios} \ Este campo identifica a la Autoridad de Certificación (CA) que ha emitido el certificado: la Fábrica Nacional de Moneda y Timbre – Real Casa de la Moneda (FNMT-RCM), a través de la unidad AC FNMT Usuarios. 
+
+\textbf{Sujeto (Subject)} \ \texttt{C=ES, serialNumber=IDCES-49204290E, GN=ALICIA, SN=LOSADA SANCHEZ, CN=LOSADA SANCHEZ ALICIA} \ Indica la identidad del titular del certificado, incluyendo su NIF, nombre y apellidos. 
+
+\textbf{Periodo de validez} \ Not Before: 16 de abril de 2025 \ Not After: 16 de abril de 2029 \ El certificado tiene una vigencia de cuatro años. Durante ese tiempo se considera válido, salvo que sea revocado previamente. 
+
+\textbf{Clave pública} \ Algoritmo: RSA (2048 bits) \ Módulo: número entero de 2048 bits que constituye la base criptográfica de RSA. Es el producto de dos números primos grandes y debe mantenerse público. \ Exponente: 65537 (valor estándar ampliamente utilizado). \ El par \texttt{(módulo, exponente)} conforma la clave pública del titular. Esta clave se utiliza para verificar firmas digitales o cifrar datos dirigidos al propietario del certificado. 
+
+\textbf{Extensiones del certificado (X.509 v3)} 
+
+\begin{itemize} 
+
+    \item \textbf{Subject Alternative Name}: incluye información adicional sobre el titular, como su NIF, nombre y apellidos, codificados mediante OIDs específicos. 
+
+    \item \textbf{Basic Constraints (critical)}: \texttt{CA:FALSE}. Este certificado no puede actuar como autoridad certificadora. 
+
+    \item \textbf{Key Usage (critical)}: especifica los usos permitidos de la clave: firma digital, no repudio y cifrado de claves. Al estar marcado como \texttt{critical}, cualquier aplicación que no entienda este campo deberá rechazar el certificado. 
+
+    \item \textbf{Extended Key Usage}: indica que el certificado está destinado a la autenticación de cliente en servicios como páginas web seguras (TLS Web Client Authentication). 
+
+    \item \textbf{Subject Key Identifier} y \textbf{Authority Key Identifier}: permiten enlazar este certificado con el de su emisor dentro de una cadena de certificación. 
+
+    \item \textbf{Authority Information Access}: proporciona URLs para acceder a servicios de validación como OCSP (protocolo de comprobación del estado del certificado en tiempo real) y para descargar el certificado de la CA emisora. 
+
+    \item \textbf{Certificate Policies} y \textbf{CPS (Certification Practice Statement)}: contienen referencias a los documentos que regulan la emisión y el uso del certificado. Se especifica que se trata de un certificado cualificado de firma electrónica conforme a la legislación española. 
+
+    \item \textbf{CRL Distribution Points}: indica la ubicación de la lista de certificados revocados (CRL), que permite verificar si el certificado ha sido invalidado antes de su fecha de expiración. 
+
+\end{itemize} 
+
+\textbf{Fingerprint (huella digital)} \ El certificado incluye una huella digital generada mediante SHA-256. Esta huella permite identificar de manera única el certificado y detectar cualquier alteración de su contenido. 
+
+\textbf{Firma digital del certificado} \ El certificado está firmado por la FNMT utilizando el algoritmo \texttt{sha256WithRSAEncryption}. Esta firma permite a cualquier entidad comprobar que el certificado ha sido emitido por la FNMT y que no ha sido modificado. 
+
+\textbf{Cadena de certificación} \ Este certificado forma parte de una cadena de confianza que comienza en una Autoridad Certificadora raíz. Gracias a los campos \texttt{Authority Key Identifier} y \texttt{Authority Information Access}, es posible verificar su validez siguiendo la jerarquía de certificación. 
