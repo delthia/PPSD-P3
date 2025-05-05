@@ -20,12 +20,25 @@ que preguntará información sobre el usuario para generar la clave, concretamen
     \item{Contraseña para las claves}
 \end{itemize}
 
-Sin embargo, en la captura se muestra la generación de las claves con \\ \texttt{gpg --full-gen-key}, que permite generar la clave de manera más configurable, indicando también el algoritmo de las claves y la caducidad de las mismas
+Sin embargo, en la figura \ref{fig:generacion-claves} se muestra la generación de las claves con \\ \texttt{gpg --full-gen-key}, que permite generar la clave de manera más configurable, indicando también el algoritmo de las claves y la caducidad de las mismas
+
+\begin{tcolorbox}[
+    colback=orange!5!white,
+    colframe=orange!75!black,
+    title=Puntualización
+]
+    En este apartado se genera \textit{una} clave PGP. Sin embargo, se mencionan continuamente varias claves. ¿Por qué es esto?
+    \tcblower
+    En realidad lo que estamos generando es una \textit{identidad} a la que se asocian varias claves. En este caso se generan dos claves, una para firmar y otra para encriptar, pero podríamos tener más subclaves con diferentes propósitos.
+
+    Por ejemplo, podríamos añadir una subclave adicional que solo utilicemos para la firma de commits de \texttt{git}.
+\end{tcolorbox}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{gpg-genkey.png}
     \caption{Generación del par de claves con \texttt{gpg}}
+    \label{fig:generacion-claves}
 \end{figure}
 
 Debido a la versatilidad de la criptografía de clave pública, no es neceario que todas las partes tengan claves generadas con el mismo algoritmo. En la captura se selecciona una clave de curva elíptica, pero es perfectamente factible que otra de las claves del grupo utilice RSA, ya que en ningún momento se usan las claves de más de una parte a la vez, se cifra con la clave pública del destinatario y se cifra con la privada del remitente.
