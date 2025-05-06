@@ -51,32 +51,38 @@ Posteriormente, debemos de hacer click en la pestaña `Cifrar/Descifrar', dentro
 Como podemos observar en las figuras \ref{fig:RSA-ciph-time} y \ref{fig:RSA-deciph-time}, el tiempo de cifrado es mucho menor que el de descifrado. Si comparamos los tiempos de ejecución con un algoritmo simétrico como AES, vemos que son relativamente parecidos. Estas dos situaciones seguramente se produzcan debido a que, en RSA, utilizamos un número $e = 65537_{(10} = 10000000000000001_{(2}$, el cual permite sacar mayor partido al algoritmo de exponenciación binaria por su bajo peso de Hamming, mientras que el exponente de la clave privada no suele o no tiene por qué tener un peso de Hamming bajo.
 A su vez, un algoritmo como AES utiliza el mismo procedimiento con la misma clave, por lo que los tiempos de ejecución de cifrado/descifrado tiene sentido que sean similares.
 
-A continuación se mostrarán las salidas después de encriptar y desencriptar el archivo \texttt{secreto.txt} con nuestro par de claves creadas (figuras de la \ref{fig:RSA-ciph-time} a la \ref{fig:RSA-deciph}), respectivamente.
+A continuación se mostrarán las salidas después de encriptar y desencriptar el archivo \texttt{secreto.txt} con nuestro par de claves creadas (figuras \ref{fig:RSA-ciph} y \ref{fig:RSA-deciph}, respectivamente).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{EncriptadoRSA-2}
-    \caption{Tiempo de ejecución del cifrado}
-    \label{fig:RSA-ciph-time}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{EncriptadoRSA-3}
-    \caption{Resultado del cifrado}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{EncriptadoRSA-2}
+        \caption{Tiempo de ejecución del cifrado}
+        \label{fig:RSA-ciph-time}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{EncriptadoRSA-3}
+        \caption{Resultado del cifrado}
+    \end{subfigure}
+    \caption{Proceso de cifrado}
     \label{fig:RSA-ciph}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{DesencriptadoRSA-1}
-    \caption{Tiempo de ejecución del descifrado}
-    \label{fig:RSA-deciph-time}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{DesencriptadoRSA-2}
-    \caption{Resultado de descifrar el mensaje}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DesencriptadoRSA-1}
+        \caption{Tiempo de ejecución del descifrado}
+        \label{fig:RSA-deciph-time}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{DesencriptadoRSA-2}
+        \caption{Resultado de descifrar el mensaje}
+    \end{subfigure}
+    \caption{Proceso de descifrado}
     \label{fig:RSA-deciph}
 \end{figure}
