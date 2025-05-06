@@ -25,12 +25,25 @@ Así, enviar un correo firmado se puede hacer simplemente con el comando
     breaklines,
     bgcolor=bgGray
 ]{bash}
-    gpg --sign --armor -u iago.rivas@udc.es cuerpo-correo.txt
+    gpg --clearsign --armor -u iago.rivas@udc.es cuerpo-correo.txt
 \end{minted}
 
-Se indica la identidad con la que firmar el mensaje, ya que dispongo de varias claves privadas.
+Indico la identidad con la que firmar el mensaje, ya que dispongo de varias claves privadas. Para enviar el mensaje simplemente tendremos que incluír el resultado de la firma en el cuerpo del mensaje y Thunderbird detectará automáticamente la firma.
 
-Para cifrar un correo podemos usar la opción \texttt{encrypt} indicando los recipientes del correo. Además, en este caso no es necesario indicar la identidad, ya que al solo cifrar, nuestra clave privada no se utiliza en ningún momento.
+\begin{tcolorbox}[
+    colback=orange!5!white,
+    colframe=orange!75!black,
+    title=Tipos de firmas en PGP
+]
+Con \texttt{gpg} podemos firmar un archivo de varias forma. Esto es especialmente interesante en un caso como el anterior, cuando queremos incluír una firma en un mensaje de corre electrónico
+\begin{itemize}
+    \item \texttt{--sign}: Firmar el documento e incluír la firma junto al documento original. Para leer el mensaje original es necesario utilizar \texttt{gpg}.
+    \item \texttt{--detatch-sign}: Firmar el documento y almacenar la firma en un documento separado.
+    \item \texttt{--clearsign}: Almacenar la firma junto al documento manteniendo el contenido original legible sin \texttt{gpg}. Útil para enviar mensajes de correo electrónico.
+\end{itemize}
+\end{tcolorbox}
+
+Para cifrar un correo podemos usar la opción \texttt{encrypt} indicando los recipientes del correo. En este caso no es necesario indicar la identidad, ya que al solo cifrar, nuestra clave privada no se utiliza en ningún momento. Igual que con la firma, tendremos que incluír el resultado del cifrado en el cuerpo del mensaje y si los recipientes utilizan Thunderbird verán el mensaje igual que si lo hubiéramos enviado directamente desde Thunderbird.
 
 \begin{minted}[
     frame=single,
@@ -41,7 +54,7 @@ Para cifrar un correo podemos usar la opción \texttt{encrypt} indicando los rec
     gpg --encrypt --armor --output correo-cif.asc -r iago.rivas@udc.es -r alicia.losada.sanchez@udc.es -r nicolas.muniz@udc.es cuerpo-correo.txt
 \end{minted}
 
-Por último, para firmar un correo además de cifrarlo añadiremos la opción \texttt{sign}. En este caso se vuelve a utilizar la clave privada, ya que al firmar queremos demostrar que el correo se originó en nosotros.
+Por último, para firmar un correo además de cifrarlo añadiremos la opción \texttt{sign}. En este caso se vuelve a utilizar la clave privada, ya que al firmar queremos demostrar nuestra autoría del correo.
 
 \begin{minted}[
     frame=single,
@@ -52,8 +65,4 @@ Por último, para firmar un correo además de cifrarlo añadiremos la opción \t
     gpg --encrypt --sign --armor --output correo-cif-sig.asc -r iago.rivas@udc.es -r alicia.losada.sanchez@udc.es -r nicolas.muniz@udc.es -u iago.rivas@udc.es cuerpo-correo.txt
 \end{minted}
 
-Aunque al enviar correos con PGP desde Thunderbird se incluyen otros archivos como la clave pública y otros metadatos, al enviar un correo con la firma adjunta, o que solo contiene un archivo adjunto que contiene el contenido cifrado del mensaje, Thunderbird utilizará PGP automáticamente y nos mostrará la información sobre la firma.
-
-Para enviar un mensaje firmado podemos adjuntar el archivo con la firma, que el recipiente podrá comprobar manualmente descargando la firma y el contenido de correo. Thunderbird no detecta automáticamente el archivo de firma.
-
-Para mensajes cifrados es aún más sencillo. Basta con pegar mensaje cifrado en el cuerpo del mensaje. Si el destinatario no tiene thunderbird, puede desencriptar el mensaje manualmente con \texttt{gpg}, mientras que si usa Thunderbird, detectará automáticamente que se trata de un mensaje cifrado y lo descifrará. También comprobará la firma si existe.
+Aunque al enviar correos con PGP desde Thunderbird se incluyen otros archivos como la clave pública y otros metadatos, al enviar un correo con una firma o un mensaje cifrado con PGP en el cuerpo, Thunderbird lo detectará automáticamente y nos mostrará la información sobre la firma y el mensaje descifrado.

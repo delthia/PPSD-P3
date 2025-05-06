@@ -33,6 +33,12 @@ Este comando genera el certificado en formato x509 para la clave \texttt{ca.key}
 
 Ahora tenemos una CA que podemos compartir con todos nuestros amigos para que añadan en sus ordenadores (si se fían de nosotros).
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{openssl-ca-sombra.png}
+    \caption{Generación de una CA con \texttt{openssl}}
+\end{figure}
+
 \subsubsection{Generación de certificados}
 
 Con la CA en funcionamiento necesitamos generar certificados para nuestros usuarios. Esto tiene dos partes:
@@ -68,13 +74,19 @@ A continuación se genera la petición de certificado CSR \textit{Certificate Si
 
 Con esta petición, la autoridad puede firmar el certificado y devolvérselo al usuario para que lo comparta como su clave pulica. Esto se puede hacer con el siguiente comando en \texttt{openssl}:
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{openssl-key-sombra.png}
+    \caption{Generación de la petición de certificado con \texttt{openssl}}
+\end{figure}
+
 \begin{minted}[
     frame=single,
     framesep=8pt,
     breaklines,
     bgcolor=bgGray
 ]{bash}
-    openssl x509 -req -days 730 -in iago.rivas.csr -CA ca.crt -CAkey ca.key -set_serial 0xBEEF -out iago.rivas.crt -setalias "iago.rivas@udc.es" -addtrust emailProtection -addreject clientAuth -addreject serverAuth
+    openssl x509 -req -days 730 -in iago.rivas.csr -CA ca.crt -CAkey ca.key -set_serial 0xBEEF -out iago.rivas.crt
 \end{minted}
 
 Todos los parámetros del certificado los definió el usuario al generar la petición, sin embargo hay algunas cosas que decide la CA, concretamente la duración del certificado, en este caso 730 días (2 años), el número de serie y las características del certificado, en este caso se permite su uso para el correo electrónico, pero se prohibe utilizarlo para cualquier tipo de autenticación.
@@ -94,4 +106,62 @@ Para utilizar nuestro certificado S/MIME en Thunderbird tenemos que añadir prim
     openssl pkcs12 -export -in iago.rivas.crt -inkey iago.rivas.key -out iago.rivas.p12
 \end{minted}
 
+Ahora, necesitaremos buscar en nuestra cuenta los ajustes de encripción de punto a punto en Thunderbird e importar:
+\begin{enumerate}
+    \item El certificado de la Autoridad Certificadora
+    \item Nuestra clave privada
+    \item Las claves públicas de las personas con las que nos queremos comunicar
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{thunderbird-smime-configuracion.png}
+    \caption{Ajustes de S/MIME en Thunderbird}
+\end{figure}
+
 Ahora podemos firmar y cifrar mensajes del mismo modo que cuando utilizábamos OpenPGP, seleccionando en el mismo desplegable la opción de S/MIME, en lugar de OpenPGP.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{thunderbird-smime-cifrado.png}
+        \caption{Envío del mensaje}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\linewidth]{thunderbird-smime-detalles-cifrado.png}
+        \caption{Detalles del mensaje}
+    \end{subfigure}
+    \caption{Envío de un mensaje cifrado con S/MIME en Thunderbird}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{thunderbird-smime-firmado.png}
+        \caption{Envío del mensaje}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\linewidth]{thunderbird-smime-detalles-firmado.png}
+        \caption{Detalles del mensaje}
+    \end{subfigure}
+    \caption{Envío de un mensaje firmado con S/MIME en Thunderbird}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{thunderbird-smime-firmado-cifrado.png}
+        \caption{Envío del mensaje}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=1.2\linewidth]{thunderbird-smime-detalles-firmado-cifrado.png}
+        \caption{Detalles del mensaje}
+    \end{subfigure}
+    \caption{Envío de un mensaje firmado y cifrado con S/MIME en Thunderbird}
+\end{figure}

@@ -54,8 +54,27 @@ En primer lugar se envió un correo firmado, luego un correo cifrado y, por últ
 
 El destinatario del correo podrá ver de forma clara que el correo estába cifrado y si tiene una firma válida, tal y como se muestra a continuación:
 
+\begin{tcolorbox}[
+    colback=orange!5!white,
+    colframe=orange!75!black,
+    title=El indicador de cifrado
+]
+Una vez configurado GPG en Thunderbird el funcionamiento es el de un cliente de correo habitual, con una opción de cifrado que, si se utiliza, automáticamente cifra el mensaje antes de enviarlo y lo muestra descifrado en el cliente. Además, mostrará un indicador cuando el mensaje está cifrado y/o firmado.
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{thunderbird-detalles.png}
-    \caption{Detalles del envío cifrado y firmado}
+    \includegraphics[width=8cm]{thunderbird-indicador.png}
+    \label{fig:indicador}
+    \caption{Indicador de cifrado en Thunderbird}
 \end{figure}
+
+En caso de que se muestre un candado, sabremos que el mensaje está cifrado. Si aparece una insignia, el mensaje está firmado y, salvo que se muestre una advertencia, la firma es válida.
+
+Al hacer clic en el indicador vemos más detalles, tal y como se muestra en la figura \ref{fig:indicador}.
+\end{tcolorbox}
+
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=10cm]{thunderbird-detalles.png}
+%     \caption{Detalles del envío cifrado y firmado}
+% \end{figure}

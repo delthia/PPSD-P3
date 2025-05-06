@@ -32,6 +32,24 @@ Sin embargo, en la figura \ref{fig:generacion-claves} se muestra la generación 
     En realidad lo que estamos generando es una \textit{identidad} a la que se asocian varias claves. En este caso se generan dos claves, una para firmar y otra para encriptar, pero podríamos tener más subclaves con diferentes propósitos.
 
     Por ejemplo, podríamos añadir una subclave adicional que solo utilicemos para la firma de commits de \texttt{git}.
+
+    También puede ser que tengamos varias claves porque mantuvimos la misma identidad añadiendo claves nuevas a medida que se iban caducando o revocando nuestras claves, como ocurre en el siguiente caso:
+
+    \begin{minted}[
+        frame=single,
+        framesep=8pt,
+        breaklines,
+        bgcolor=bgGray,
+        fontsize=\footnotesize
+    ]{}
+    pub    rsa2048 2006-12-11 [SC] [expired: 2022-01-31]
+        4CEB30C432ADB3BF42D0248E6DC8BDEB14BF5162
+    uid           [ expired] Jose Manuel Vazquez Naya <jmvazquez@udc.es>
+    uid           [ expired] José M. Vázquez-Naya (Universidade da Coruña) <jmvazquez@udc.es>
+    uid           [ expired] José M. Vázquez-Naya (Universidade da Coruña) <jose.manuel.vazquez.naya@udc.es>
+    uid           [ expired] José M. Vázquez-Naya (Universidade da Coruña) <jose@udc.es>
+    uid           [ expired] José Manuel Vázquez Naya <jmvazquez@udc.es>
+    \end{minted}
 \end{tcolorbox}
 
 \begin{figure}[H]
@@ -41,7 +59,7 @@ Sin embargo, en la figura \ref{fig:generacion-claves} se muestra la generación 
     \label{fig:generacion-claves}
 \end{figure}
 
-Debido a la versatilidad de la criptografía de clave pública, no es neceario que todas las partes tengan claves generadas con el mismo algoritmo. En la captura se selecciona una clave de curva elíptica, pero es perfectamente factible que otra de las claves del grupo utilice RSA, ya que en ningún momento se usan las claves de más de una parte a la vez, se cifra con la clave pública del destinatario y se cifra con la privada del remitente.
+Debido a la versatilidad de la criptografía de clave pública, no es necesario que todas las partes tengan claves generadas con el mismo algoritmo. En la captura se selecciona una clave de curva elíptica, pero es perfectamente factible que otra de las claves del grupo utilice RSA, ya que en ninguna operación criptográfica se usan las claves de más de una parte a la vez, se cifra con la clave pública del destinatario y se cifra con la privada del remitente.
 
 Una vez generadas las claves, es necesario exportarlas, para poder compartirlas. Thunderbird comparte automáticamente la clave pública al enviar un correo, pero necesitaremos las claves públicas del resto de integrantes para poder empezar la conversación. Para exportar las claves se puede utilizar el comando:
 
@@ -54,7 +72,7 @@ Una vez generadas las claves, es necesario exportarlas, para poder compartirlas.
     gpg --output 1.2_Rivas_Moar,_Iago.asc --armor --export iago.rivas@udc.es
 \end{minted}
 
-La opción \texttt{--armor} hace que se exporte una representación en ASCII de la clave, y simplemente es necesario indicar la clave que se quiere exportar por su correo electrónico o con el ID. Compartir la clave sería cuestión de enviarla por correo electrónico u otro medio. Para importar una clave pública se puede utilizar la opción \texttt{import}:
+La opción \texttt{--armor} hace que se exporte una representación en ASCII de la clave y simplemente es necesario indicar la clave que se quiere exportar por su correo electrónico o con el ID. Compartir la clave sería cuestión de enviarla por correo electrónico u otro medio. Para importar una clave pública se puede utilizar la opción \texttt{import}:
 
 \begin{minted}[
     frame=single,

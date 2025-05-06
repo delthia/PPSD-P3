@@ -11,7 +11,18 @@ Así, para cifrar un archivo \texttt{foto-importante.jpg} con PGP podemos usar e
     breaklines,
     bgcolor=bgGray
 ]{bash}
-    gpg --encrypt -r iago.rivas@udc.es foto-importante.jpg
+    gpg --encrypt -r iago.rivas@udc.es secreto.txt
 \end{minted}
 
 La principal diferencia con los comandos utilizados para cifrar mensajes de correo electrónico es que no necesitamos almacenarlo en ASCII. Además, en este caso, como queremos cifrar el archivo para almacenarlo y necesitamos poder descifrarlo nosotros mismos en el futuro, nos pondremos como recipiente. Así, el archivo se cifra con nuestra propia clave pulica.
+
+Si, sin embargo, quisiéramos que el archivo se cifrara de manera simétrica (es decir, que se cifrara y descifrara con nuestra clave privada), simplemente tendríamos añadir la opción \texttt{--symmetric}, resultando el comando:
+
+\begin{minted}[
+    frame=single,
+    framesep=8pt,
+    breaklines,
+    bgcolor=bgGray
+]{bash}
+    gpg --encrypt --symmetric -r iago.rivas@udc.es secreto.txt
+\end{minted}
