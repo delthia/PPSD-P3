@@ -1,6 +1,8 @@
 \subsection{Ejercicio 9}
 \graphicspath{ {img/09} }
 
+\subsubsection{Cifrado archivo}
+
 Si queremos almacenar el archivo \texttt{secreto.txt} de manera segura, con OpenPGP, debemos cifrarlo con nuestra propia clave pública para que solo seamos nosotros, los únicos con acceso a nuestra clave privada, quienes podemos abrirlo. Además, al cifrar archivos para almacenarlos o compartirlos de otra manera, no necesitamos usar la \texttt{armor}, como hacíamos con el correo electrónico, ya que en este caso nos a igual que el archivo sea un archivo binario en bruto al no tener la limitación de ASCII del correo electrónico.
 
 Así, para cifrar un archivo \texttt{foto-importante.jpg} con PGP podemos usar el comando:
@@ -14,7 +16,23 @@ Así, para cifrar un archivo \texttt{foto-importante.jpg} con PGP podemos usar e
     gpg --encrypt -r iago.rivas@udc.es secreto.txt
 \end{minted}
 
+\subsubsection{Cifrado correo electrónico}
+
 La principal diferencia con los comandos utilizados para cifrar mensajes de correo electrónico es que no necesitamos almacenarlo en ASCII. Además, en este caso, como queremos cifrar el archivo para almacenarlo y necesitamos poder descifrarlo nosotros mismos en el futuro, nos pondremos como recipiente. Así, el archivo se cifra con nuestra propia clave pulica.
+
+\subsubsection{Operaciones criptográficas en la operación}
+
+Cuando se cifra un archivo con PGP usando la clave pública del destinatario, intervienen las siguientes operaciones criptográficas:
+\begin{enumerate}
+    \item \textbf{Comprensión del archivo}: el archivo se comprime (por ejemplo con ZIP), para reducir el tamaño y mejorar la eficiencia del cifrado.
+    \item \textbf{Generación de una clave de sesión}: se genera una clave de sesión aleatoria, que se usará para cifrar el contenido del archivo de forma rápida y eficiente. Esta es una clave temporal válida solo para ese archivo o mensaje.
+    \item \textbf{Cifrado simétrico del archivo comprimido con la clave de sesión}: el archivo comprimido se cifra con un algoritmo de cifrado simétrico (por ejemplo, AES o CAST5) usando la clave de sesión. Esto garantiza la confidencialidad del contenido.
+    \item \textbf{Cifrado asimétrico de la clave de sesión con la clave pública del destinatario}: la clave de sesión se cifra con la clave pública del destinatario (por ejemplo, RSA). Esto asegura que solo el destinatario pueda recuperar la clave de sesión y, con ella, descifrar el archivo.
+\end{enumerate}
+
+La combinación de estas operaciones constituyen un cifrado híbrido. que es característico del funcionamiento de PGP. Se usa cifrado simétrico para el contenido y cifrado asimétrico para proteger la clave de sesión.
+
+\subsubsection{Cifrado simétrico}
 
 Si, sin embargo, quisiéramos que el archivo se cifrara de manera simétrica (es decir, que se cifrara y descifrara con nuestra clave privada), simplemente tendríamos añadir la opción \texttt{--symmetric}, resultando el comando:
 
