@@ -19,7 +19,7 @@
     - [x] Política de cookies
     - [x] Cookies en Firefox 
     - [x] ProtonVPN (Nico)
-    - [ ] VPN UDC (Nico)
+    - [x] VPN UDC (Nico)
     - [x] TOR
 
 # Pequeña guía de compilación
