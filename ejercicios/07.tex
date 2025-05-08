@@ -27,7 +27,7 @@ Ahora, encriptar un correo es cuestión de selecciónar la opción “Encriptar�
 \begin{itemize}
     \item{\underline{Firmar:} Firma el correo con la clave del remitente. No afecta a la capacidad de leer el correo del destinatario.}
     \item{\underline{Encriptar:} Encripta el correo con la clave del destinatario, por lo que es necesario conocer la clave pública del mismo. Además, el destinatario no podrá leer el correo sin desencriptarlo con su clave privada. Existe una opción que permite encriptar también el asunto.}
-    \item{\underline{Firmar y encriptar:} Primero se firma el correo y luego se encripta. Esto permite mantener la privacidad en la comunicación y que solo el destinatario, que puede leer el correo, pueda comprobar también que el remitente es quien dice ser.}
+    \item{\underline{Firmar y encriptar:} El corroe se firma y se cifra. Esto permite mantener la privacidad en la comunicación y que solo el destinatario, que puede leer el correo, pueda comprobar también que el remitente es quien dice ser.}
 \end{itemize}
 
 En estos casos el mensaje se envía como un bloque cifrado, y en caso de solo firmarse, se adjunta la firma. En otro lector de correo, por ejemplo la versión web de Outlook, no podremos leer el mensaje y tendremos que descargarlo para desencriptarlo con \texttt{gpg}, mientras que Thunderbird muestra automáticamente los mensajes cifrados como si no lo estuvieran, además de indicar claramente si tienen una firma y si es válida.
@@ -63,7 +63,7 @@ Una vez configurado GPG en Thunderbird el funcionamiento es el de un cliente de 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=8cm]{thunderbird-indicador.png}
+    \includegraphics[width=8cm]{thunderbird-indicador-sombra.png}
     \caption{Indicador de cifrado en Thunderbird}
     \label{fig:indicador-cifrado}
 \end{figure}

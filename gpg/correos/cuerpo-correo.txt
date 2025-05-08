@@ -1,0 +1,7 @@
+Otros 3 mensajes...
+
+- El primero firmado
+- El segundo cifrado
+- El tercero cifrado y firmado
+
+Ahora no desde thunderbird, se utilizó la utilidad gpg directamente desde la línea de comandos. ¿Funcionará?

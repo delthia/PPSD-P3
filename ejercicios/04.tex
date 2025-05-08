@@ -3,7 +3,7 @@
 
 \subsubsection{Certificados web}
 
-Los sitios web seleccionados fueron:
+Para analizar sus certificados digitales seleccionamos 5 sitios web con certificados de diferentes características. Los sitios web seleccionados fueron:
 \begin{itemize}
     \item \href{https://www.coruna.gal}{coruna.gal}
     \item \href{https://delthia.com}{delthia.com}
@@ -20,31 +20,33 @@ Los sitios web seleccionados fueron:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{cert-delthia.png}
-    \caption{Certificado de \url{delthia.com}}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{cert-transportes.png}
-    \caption{Certificado de \url{nap.transportes.gob.es}}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{cert-udc.png}
-    \caption{Certificado de \url{udc.es}}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{cert-wikipedia.png}
-    \caption{Certificado de \url{wikipedia.org}}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cert-delthia.png}
+        \caption{Certificado de \url{delthia.com}}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cert-transportes.png}
+        \caption{Certificado de \url{nap.transportes.gob.es}}
+    \end{subfigure}
+    
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cert-udc.png}
+        \caption{Certificado de \url{udc.es}}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{cert-wikipedia.png}
+        \caption{Certificado de \url{wikipedia.org}}
+    \end{subfigure}
+    \caption{Certificados web}
 \end{figure}
 
 \subsubsection{Análisis con openssl}
 
-A continuación se analizan los certificados de \url{coruna.gal} y \url{udc.es}, para lo que utiliza \texttt{OpenSSL} ver los detalles del certificado descargado desde firefox.
+Después de descargar los certificados de \url{coruna.gal} y \url{udc.es} desde la ventana de detalles que mostramos en el ejercicio anterior utilizamos \texttt{openssl} para ver sus detalles, utilizando el siguiente comando:
 
 \begin{minted}[
 frame=single,
@@ -54,6 +56,8 @@ bgcolor=bgGray,
 ]{bash}
     openssl x509 -in certificado.pem -text -noout
 \end{minted}
+
+También podríamos haber utilizado \texttt{openssl s\_client} para descargar y ver los certificados directamente desde OpenSSL.
 
 \begin{figure}[H]
     \centering

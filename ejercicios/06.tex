@@ -20,7 +20,7 @@ que preguntará información sobre el usuario para generar la clave, concretamen
     \item{Contraseña para las claves}
 \end{itemize}
 
-Sin embargo, en la figura \ref{fig:generacion-claves} se muestra la generación de las claves con \\ \texttt{gpg --full-gen-key}, que permite generar la clave de manera más configurable, indicando también el algoritmo de las claves y la caducidad de las mismas
+Sin embargo, en la figura \ref{fig:generacion-claves} se muestra la generación de las claves con \\ \texttt{gpg --full-gen-key}, que permite generar la clave de manera más configurable, indicando también el algoritmo de las claves y la caducidad de las mismas.
 
 \begin{tcolorbox}[
     colback=orange!5!white,
@@ -72,7 +72,7 @@ Una vez generadas las claves, es necesario exportarlas, para poder compartirlas.
     gpg --output 1.2_Rivas_Moar,_Iago.asc --armor --export iago.rivas@udc.es
 \end{minted}
 
-La opción \texttt{--armor} hace que se exporte una representación en ASCII de la clave y simplemente es necesario indicar la clave que se quiere exportar por su correo electrónico o con el ID. Compartir la clave sería cuestión de enviarla por correo electrónico u otro medio. Para importar una clave pública se puede utilizar la opción \texttt{import}:
+La opción \texttt{--armor} hace que se exporte una representación en ASCII de la clave y simplemente es necesario indicar la clave que se quiere exportar por su dirección correo electrónico o con el ID. Compartir la clave sería cuestión de enviarla por correo electrónico u otro medio. Para importar una clave pública se puede utilizar la opción \texttt{import}:
 
 \begin{minted}[
     frame=single,
@@ -102,4 +102,4 @@ Por último, si perdiéramos el control de nuestra clave privada y quisiéramos 
     gpg --output iago.rivas-revocation.asc --armor --gen-revoke iago.rivas@udc.es
 \end{minted}
 
-Que generaría un comando de revocación que podríamos compartir con nuestros contactos.
+Que generaría un certificado de revocación que podríamos compartir con nuestros contactos. Además, si estamos en el equipo en el que se generó la clave, probablemente se generara un certificado de revocación automáticamente, que podríamos utilizar si lo necesitáramos, típicamente en \texttt{$\sim$/.gnupg/openpgp-revocs.d/<KEYID>.rev}.

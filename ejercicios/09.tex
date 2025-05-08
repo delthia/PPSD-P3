@@ -5,7 +5,7 @@
 
 Si queremos almacenar el archivo \texttt{secreto.txt} de manera segura, con OpenPGP, debemos cifrarlo con nuestra propia clave pública para que solo seamos nosotros, los únicos con acceso a nuestra clave privada, quienes podemos abrirlo. Además, al cifrar archivos para almacenarlos o compartirlos de otra manera, no necesitamos usar la \texttt{armor}, como hacíamos con el correo electrónico, ya que en este caso nos a igual que el archivo sea un archivo binario en bruto al no tener la limitación de ASCII del correo electrónico.
 
-Así, para cifrar un archivo \texttt{foto-importante.jpg} con PGP podemos usar el comando:
+Así, para cifrar un archivo \texttt{secreto.txt} con PGP podemos usar el comando:
 
 \begin{minted}[
     frame=single,
@@ -30,7 +30,7 @@ Cuando se cifra un archivo con PGP usando la clave pública del destinatario, in
     \item \textbf{Cifrado asimétrico de la clave de sesión con la clave pública del destinatario}: la clave de sesión se cifra con la clave pública del destinatario (por ejemplo, RSA). Esto asegura que solo el destinatario pueda recuperar la clave de sesión y, con ella, descifrar el archivo.
 \end{enumerate}
 
-La combinación de estas operaciones constituyen un cifrado híbrido. que es característico del funcionamiento de PGP. Se usa cifrado simétrico para el contenido y cifrado asimétrico para proteger la clave de sesión.
+La combinación de estas operaciones constituyen un cifrado híbrido que es característico del funcionamiento de PGP. Se usa cifrado simétrico para el contenido y cifrado asimétrico para proteger la clave de sesión.
 
 \subsubsection{Cifrado simétrico}
 

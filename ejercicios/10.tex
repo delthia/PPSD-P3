@@ -89,7 +89,7 @@ Con esta petición, la autoridad puede firmar el certificado y devolvérselo al 
     openssl x509 -req -days 730 -in iago.rivas.csr -CA ca.crt -CAkey ca.key -set_serial 0xBEEF -out iago.rivas.crt
 \end{minted}
 
-Todos los parámetros del certificado los definió el usuario al generar la petición, sin embargo hay algunas cosas que decide la CA, concretamente la duración del certificado, en este caso 730 días (2 años), el número de serie y las características del certificado, en este caso se permite su uso para el correo electrónico, pero se prohibe utilizarlo para cualquier tipo de autenticación.
+Todos los parámetros del certificado los definió el usuario al generar la petición, sin embargo hay algunas cosas que decide la CA, concretamente la duración del certificado, en este caso 730 días (2 años), el número de serie y las características del certificado, aunque en este caso no especificamos ninguna en concreto, por lo que el certificado funcionará tanto para el cifrado de correo electrónico como para autenticación.
 
 Para generar el certificado es necesaria la clave privada de la CA, ya que se incluye la firma de la misma para darle validez ante aquellas personas que se fíen de la Autoridad pero no del usuario del certificado.
 
@@ -106,7 +106,7 @@ Para utilizar nuestro certificado S/MIME en Thunderbird tenemos que añadir prim
     openssl pkcs12 -export -in iago.rivas.crt -inkey iago.rivas.key -out iago.rivas.p12
 \end{minted}
 
-Ahora, necesitaremos buscar en nuestra cuenta los ajustes de encripción de punto a punto en Thunderbird e importar:
+Ahora necesitaremos buscar en nuestra cuenta los ajustes de encripción de punto a punto en Thunderbird e importar:
 \begin{enumerate}
     \item El certificado de la Autoridad Certificadora
     \item Nuestra clave privada
@@ -119,7 +119,7 @@ Ahora, necesitaremos buscar en nuestra cuenta los ajustes de encripción de punt
     \caption{Ajustes de S/MIME en Thunderbird}
 \end{figure}
 
-Ahora podemos firmar y cifrar mensajes del mismo modo que cuando utilizábamos OpenPGP, seleccionando en el mismo desplegable la opción de S/MIME, en lugar de OpenPGP.
+Ya podemos firmar y cifrar mensajes del mismo modo que cuando utilizábamos OpenPGP, seleccionando en el mismo desplegable la opción de S/MIME, en lugar de OpenPGP.
 
 \begin{figure}[H]
     \centering
