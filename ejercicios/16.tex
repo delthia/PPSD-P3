@@ -57,9 +57,10 @@ Con el cliente de VPN instalado, nos conectamos y reexaminamos los parámetros d
     \label{fig:Calidad-Conexión-VPN-UDC}
 \end{figure}
 
+Vemos que se genera una nueva interfaz de red (que lleva el sufijo DNS \texttt{udc.pri}), que corresponde a la VPN. Su IP (privada) es \texttt{10.30.8.191/32}, sin embargo, si comprobamos la dirección IP pública utilizando un servicio web veremos la misma que antes. Esto se debe a que esta VPN no está configuarada para redirigir todo el tráfico de red por la misma.
 
-Como podemos ver, la calidad de la red no cambia demasiado, de hecho en el caso de las capturas mejoran las velocidades de carag y descarga, aunque estos resultados varían al realizarlos varias veces.
-Esto concuerda con lo esperado, ya que nos encontramos cerca de la UDC.
+A diferencia de ProtonVPN, la VPN de la UDC tiene como objetivo permitir el acceso desde internet a servicios que están disponibles solo desde la red de la UDC. Aunque hoy en día son extremadamente comunes las VPNs comerciales con el objetivo de enmascarar el tráfico, el de extender una red privada era el propósito original de las VPNs.
 
-Lo que sí llega a cambiar son las interfaces de red. Vemos que se genera una nueva interfaz de red (que lleva el sufijo DNS \texttt{udc.pri}), que corresponde a la actividad de la VPN. Su IP (privada) es \texttt{10.30.8.191/32}.
-En cambio, la IP pública no cambia al pasar a utilizar la VPN.
+Por lo explicado anteriormente, tiene sentido el resultado observado al comprobar la velocidad de la conexión, y es que no varía, ya que para acceder al servidor web de la prueba de velocidad, que se encuentra fuera de la red de la UDC, nuestro tráfico sigue yendo de manera directa, ignorando completamente la interfaz creada por la VPN.
+
+Si quisiéramos evaluar la calidad de esta VPN tendríamos que realizar la prueba de velocidad contra un servidor que se encuentre en la red de la UDC, ya que en este caso el tráfico sí que iría por esa interfaz y nos permitiría evaluar su calidad.
