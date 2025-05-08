@@ -1,15 +1,20 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Formato de las páginas %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Formato de las páginas & Abstract %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[12pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \setlength{\headheight}{18.0pt}
 \usepackage[english,spanish]{babel}
 \usepackage[margin=25mm]{geometry}
-\parskip 4.2pt  % Espaciado entre párrafos
+\parskip 5pt  % Espaciado entre párrafos
 \parindent 9pt  % Indentación de párrafos
 %\renewcommand{\baselinestretch}{1.5}  % Interlineado de 1.5
+
+% Título del abstract reformateado
+%\renewenvironment{abstract}
+%{\par\noindent\textbf{\abstractname. }\ \ignorespaces}
+%{\par\medskip}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -24,31 +29,33 @@
 \fancyfoot
 
 
-%%%%%%%%%%%%%%
-%% Imágenes %%
-%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Imágenes & Tablas %%
+%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{graphicx}
 \usepackage{float}
 \counterwithin{figure}{subsection} % Numeración relativa de las figuras
-\counterwithin{table}{subsection} % Numeración relativa de las tablas
+%\counterwithin{table}{subsection} % Numeración relativa de las tablas
 \usepackage[labelfont=bf,font=rm]{caption} % Formato de las captions
 \graphicspath{ {img} }
+%\usepackage{longtable} & Tablas en varias páginas
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Hipervínculos y Bibliografía %%
+%% Hipervínculos & Bibliografía %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[hidelinks]{hyperref}
 \usepackage{url} % simple URL typesetting
 
 \usepackage[square,numbers]{natbib} % Citas
+\setcitestyle{authoryear,open={(},close={)}} % Formato de las citas (authoryear, numbers o super)
 \usepackage[nottoc]{tocbibind} % Incluye Bibliografía en el Índice
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Símbolos y bloques de código/texto %%
+%% Símbolos & bloques de código/texto %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{amsmath}
@@ -56,7 +63,9 @@
 \usepackage{minted}
 \usepackage{verbatim}
 \usepackage{siunitx} % Unidades del SI
-\usepackage{longtable}
+%\usepackage{longtable}
+\usepackage{tcolorbox}
+\usepackage{subcaption}
 
 
 %%%%%%%%%%%%%
@@ -65,10 +74,9 @@
 
 \usepackage{xcolor}
 \definecolor{bgGray}{rgb}{0.88,0.88,0.88}
+\definecolor{dimGray}{RGB}{100,100,100}
+%\definecolor{rosaUDC}{RGB}{177,0,114}
 
-
-\usepackage{tcolorbox}
-\usepackage{subcaption}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Título, autores y fecha %%
@@ -84,7 +92,7 @@
     \end{figure}
 
     \textsf{UNIVERSIDADE DA CORUÑA} \\
-    \textsf{\Large Facultade de Informática} \\
+    \textsf{\textcolor{dimGray}{\Large Facultade de Informática}} \\
 
     \vspace{3cm}
     \textbf{PPSD, Práctica 3: \\ Protección de datos II}
@@ -102,7 +110,7 @@
     \\ \\
     \vspace{5cm}
 }
-\date{\textsf\today}
+\date{\textcolor{dimGray}{\textsf\today}}
 
 
 

@@ -18,7 +18,7 @@ Decidimos utilizar una clave RSA de 4096 bits. Con el siguiente comando generamo
     openssl genrsa -des3 -out ca.key 4096
 \end{minted}
 
-Una vez generada la clave privada, necesitamos un certificado con la clave pública de la CA. Un formato común para compartir las claves públicas junto con su identidad es x509. Con esto, el certificado contiene información sobre la CA y la clave pública. La información puede ser variada, y algunos parámetros habituales son los que pide \texttt{openssl} de manera interactiva al generar el certificado
+Una vez generada la clave privada, necesitamos un certificado con la clave pública de la CA. Un formato común para compartir las claves públicas junto con su identidad es x509. Con esto, el certificado contiene información sobre la CA y la clave pública. La información puede ser variada, y algunos parámetros habituales son los que pide \\\texttt{openssl} de manera interactiva al generar el certificado
 
 \begin{minted}[
     frame=single,
@@ -29,7 +29,7 @@ Una vez generada la clave privada, necesitamos un certificado con la clave públ
     openssl req -new -x509 -days 1826 -key ca.key -out ca.crt
 \end{minted}
 
-Este comando genera el certificado en formato x509 para la clave \texttt{ca.key}. Indicamos que queremos que tenga una validez de 1826 días (5 años) y que se almacene en \texttt{ca.crt}.
+Este comando genera el certificado en formato x509 para la clave \texttt{ca.key}. Indicamos que queremos que tenga una validez de 1826 días (5 años) y que se almacene en \\\texttt{ca.crt}.
 
 Ahora tenemos una CA que podemos compartir con todos nuestros amigos para que añadan en sus ordenadores (si se fían de nosotros).
 

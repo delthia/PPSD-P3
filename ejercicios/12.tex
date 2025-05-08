@@ -11,7 +11,7 @@ Los sitios web seleccionados fueron:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{cookies_wiki.png}
+    \includegraphics[width=0.9\textwidth]{cookies_wiki.png}
     \caption{Cookies almacenadas por Wikipedia}
     \label{fig:cookies_wiki}
 \end{figure}
@@ -27,7 +27,7 @@ Seleccionamos la cookie \texttt{GeoIP} para su análisis. Esta cookie contiene i
     \item \texttt{SameSite (None)}: permite que esta cookie se envíe en peticiones entre sitios (cross-site), lo cual es potencialmente más vulnerable a ataques CSRF si no se combina con otras medidas.
 \end{itemize}
 
-Aunque la cookie no contiene datos especialmente sensibles, la combinación de \texttt{Secure=false}, \texttt{HttpOnly=false} y \texttt{SameSite=None} la hace más vulnerable que otras cookies más restringidas. Sin embargo, dado que Wikipedia utiliza HTTPS obligatorio y no utiliza cookies de sesión crítica para usuarios no registrados, el riesgo real es bajo.
+Aunque la cookie no contiene datos especialmente sensibles, la combinación de \\\texttt{Secure=false}, \texttt{HttpOnly=false} y \texttt{SameSite=None} la hace más vulnerable que otras cookies más restringidas. Sin embargo, dado que Wikipedia utiliza HTTPS obligatorio y no utiliza cookies de sesión crítica para usuarios no registrados, el riesgo real es bajo.
 
 \begin{figure}[H]
     \centering
@@ -47,7 +47,7 @@ Seleccionamos la cookie \texttt{AMCVS\_} para su análisis. Esta cookie está re
     \item \texttt{SameSite (None)}: permite que esta cookie se envíe en peticiones entre sitios (cross-site), lo cual es potencialmente más vulnerable a ataques CSRF si no se combina con otras medidas.
 \end{itemize}
 
-Aunque la cookie no contiene información directamente sensible, el hecho de que sea accesible desde JavaScript (\texttt{HttpOnly=false}) y pueda ser enviada entre sitios (\texttt{SameSite=None}) la hace más expuesta a ciertos ataques, especialmente si el sitio web tiene fallos de seguridad no corregidos. No obstante, al estar marcada como Secure, su transmisión está protegida frente a interceptación en redes no cifradas.
+Aunque la cookie no contiene información directamente sensible, el hecho de que sea accesible desde JavaScript (\texttt{HttpOnly=false}) y pueda ser enviada entre sitios \\(\texttt{SameSite=None}) la hace más expuesta a ciertos ataques, especialmente si el sitio web tiene fallos de seguridad no corregidos. No obstante, al estar marcada como Secure, su transmisión está protegida frente a interceptación en redes no cifradas.
 
 \subsubsection{Cookies persistentes y de sesión}
 
